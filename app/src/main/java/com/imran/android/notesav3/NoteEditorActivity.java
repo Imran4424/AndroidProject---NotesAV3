@@ -3,9 +3,11 @@ package com.imran.android.notesav3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 public class NoteEditorActivity extends AppCompatActivity {
-
+    private TextView title;
+    private TextView body;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
