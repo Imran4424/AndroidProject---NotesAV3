@@ -12,5 +12,8 @@ public class NoteEditorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_editor);
+
+        title = findViewById(R.id.editorTitle);
+        body = findViewById(R.id.editTextTextMultiLine);
     }
 }
