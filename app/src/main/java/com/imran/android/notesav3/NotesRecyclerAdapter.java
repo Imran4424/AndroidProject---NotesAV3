@@ -1,6 +1,7 @@
 package com.imran.android.notesav3;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +57,10 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Intent noteEditorIntent = new Intent(context, NoteEditorActivity.class);
+                    NoteEditorActivity.position = position;
                     
+                    context.startActivity(noteEditorIntent);
                 }
             });
         }

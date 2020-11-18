@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class NoteEditorActivity extends AppCompatActivity {
+    public static int position;
     private TextView title;
     private TextView body;
     @Override
