@@ -59,7 +59,7 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
                 public void onClick(View v) {
                     Intent noteEditorIntent = new Intent(context, NoteEditorActivity.class);
                     NoteEditorActivity.position = position;
-                    
+
                     context.startActivity(noteEditorIntent);
                 }
             });
