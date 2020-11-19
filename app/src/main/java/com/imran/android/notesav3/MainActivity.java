@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
             bodyList.add(body);
         } else {
             ArrayList<String> test = new ArrayList<>();
-
             
         }
 
