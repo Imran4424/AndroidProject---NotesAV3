@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             ArrayList<String> test = new ArrayList<>();
 
-
             
         }
 
