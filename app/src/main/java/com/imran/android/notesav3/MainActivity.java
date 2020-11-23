@@ -54,11 +54,7 @@ public class MainActivity extends AppCompatActivity {
         super.onOptionsItemSelected(item);
 
         if (item.getItemId() == R.id.add_note) {
-            if (titleList.size() > bodyList.size()) {
-                NoteEditorActivity.position = titleList.size();
-            } else {
-                NoteEditorActivity.position = bodyList.size();
-            }
+            NoteEditorActivity.position = Math.max(titleList.size(), bodyList.size());
 
             Intent newNoteIntent = new Intent(this, NoteEditorActivity.class);
             startActivity(newNoteIntent);
