@@ -19,6 +19,14 @@ public class NoteEditorActivity extends AppCompatActivity {
         title = findViewById(R.id.editorTitle);
         body = findViewById(R.id.editTextTextMultiLine);
 
+        if(position < MainActivity.titleList.size()) {
+            title.setText(MainActivity.titleList.get(position));
+        }
+
+        if (position < MainActivity.bodyList.size()) {
+            title.setText(MainActivity.bodyList.get(position));
+        }
+
         title.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence text, int start, int count, int after) {
