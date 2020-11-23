@@ -17,18 +17,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public static void saveNote(String title, String body, int position) {
-        if(position >= titleList.size()) {
+    public static void saveTitle(int position, String title) {
+        if (position >= titleList.size()) {
             titleList.add(title);
-            bodyList.add(body);
         } else {
-            ArrayList<String> test = new ArrayList<>();
-
-
-
-
-            
+            titleList.set(position, title);
         }
 
+    }
+    
+    public static void saveBody(int position, String body) {
+        if (position >= bodyList.size()) {
+            bodyList.add(body);
+        } else {
+            bodyList.set(position, body);
+        }
     }
 }
