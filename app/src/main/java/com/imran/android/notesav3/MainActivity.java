@@ -3,6 +3,7 @@ package com.imran.android.notesav3;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -51,5 +52,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
+
+        if (item.getItemId() == R.id.add_note) {
+            if (titleList.size() > bodyList.size()) {
+                NoteEditorActivity.position = titleList.size();
+            } else {
+                NoteEditorActivity.position = bodyList.size();
+            }
+
+            Intent newNoteIntent = new Intent(this, NoteEditorActivity.class);
+            startActivity(newNoteIntent);
+        }
     }
 }
