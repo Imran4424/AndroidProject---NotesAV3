@@ -2,6 +2,8 @@ package com.imran.android.notesav3;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +22,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        RecyclerView notesRecyclerView = findViewById(R.id.notesRecyclerView);
+        notesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        NotesRecyclerAdapter notesRecyclerAdapter = new NotesRecyclerAdapter(this, titleList);
+        notesRecyclerView.setAdapter(notesRecyclerAdapter);
     }
 
     public static void saveTitle(int position, String title) {

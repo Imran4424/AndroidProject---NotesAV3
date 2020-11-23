@@ -19,13 +19,11 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
     private final Context context;
     private final LayoutInflater layoutInflater;
     private final List<String> titles;
-    private final List<String> body;
 
-    public NotesRecyclerAdapter(Context context, List<String> titles, List<String> body) {
+    public NotesRecyclerAdapter(Context context, List<String> titles) {
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
         this.titles = titles;
-        this.body = body;
     }
 
     @NonNull
@@ -44,7 +42,7 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
 
     @Override
     public int getItemCount() {
-        return 0;
+        return titles.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
