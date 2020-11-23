@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-    
+
     public static void saveBody(int position, String body) {
         if (position >= bodyList.size()) {
             bodyList.add(body);
