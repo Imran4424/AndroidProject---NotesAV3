@@ -62,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
 
             Intent newNoteIntent = new Intent(this, NoteEditorActivity.class);
             startActivity(newNoteIntent);
+
+            return  true;
         }
+
+        return  false;
     }
 }
