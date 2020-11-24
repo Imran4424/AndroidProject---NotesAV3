@@ -59,7 +59,12 @@ public class NoteEditorActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence text, int start, int before, int count) {
-                MainActivity.saveBody(position, String.valueOf(text));
+                String bodyText = text.toString();
+                bodyText = bodyText.replaceAll(" ", "");
+
+                if(bodyText.length() > 0) {
+                    MainActivity.saveBody(position, String.valueOf(text));
+                }
             }
 
             @Override
