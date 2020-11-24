@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
             bodyList.set(position, body);
         }
 
+        HashSet<String> bodySet = new HashSet<>(MainActivity.bodyList);
+        sharedPreferences.edit().putStringSet(BODY_LIST_KEY, bodySet).apply();
         notesRecyclerAdapter.notifyDataSetChanged();
     }
 
@@ -65,6 +67,12 @@ public class MainActivity extends AppCompatActivity {
         titleList.remove(position);
         bodyList.remove(position);
 
+        HashSet<String> titleSet = new HashSet<>(MainActivity.titleList);
+        sharedPreferences.edit().putStringSet(TITLE_LIST_KEY, titleSet).apply();
+
+        HashSet<String> bodySet = new HashSet<>(MainActivity.bodyList);
+        sharedPreferences.edit().putStringSet(BODY_LIST_KEY, bodySet).apply();
+        
         notesRecyclerAdapter.notifyDataSetChanged();
     }
     // Menu
