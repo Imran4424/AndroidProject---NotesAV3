@@ -35,6 +35,14 @@ public class MainActivity extends AppCompatActivity {
         HashSet<String> titleSet = (HashSet<String>) sharedPreferences.getStringSet(TITLE_LIST_KEY, null);
         HashSet<String> bodySet = (HashSet<String>) sharedPreferences.getStringSet(BODY_LIST_KEY, null);
 
+        if (titleSet != null) {
+            titleList = new ArrayList<>(titleSet);
+        }
+
+        if (bodySet != null) {
+            bodyList = new ArrayList<>(bodySet);
+        }
+
         RecyclerView notesRecyclerView = findViewById(R.id.notesRecyclerView);
         notesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
