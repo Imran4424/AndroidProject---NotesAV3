@@ -1,10 +1,14 @@
 package com.imran.android.notesav3;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -59,6 +63,26 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
                     NoteEditorActivity.position = position;
 
                     context.startActivity(noteEditorIntent);
+                }
+            });
+            
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    new AlertDialog.Builder(context)
+                            .setIcon(android.R.drawable.ic_delete)
+                            .setTitle("Are you sure?")
+                            .setMessage("Do you want to delete this note?")
+                            .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    MainActivity.removeNote(position);
+                                }
+                            })
+                            .setNegativeButton("NO", null)
+                            .show();
+
+                    return true;
                 }
             });
         }

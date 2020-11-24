@@ -51,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
         notesRecyclerAdapter.notifyDataSetChanged();
     }
 
+    public static void removeNote(int position) {
+        titleList.remove(position);
+        bodyList.remove(position);
+
+        notesRecyclerAdapter.notifyDataSetChanged();
+    }
     // Menu
 
     @Override
