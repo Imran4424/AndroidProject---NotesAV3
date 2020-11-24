@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPreferences = getApplicationContext().getSharedPreferences("com.imran.android.notesav3", Context.MODE_PRIVATE);
 
+        HashSet<String> titleSet = (HashSet<String>) sharedPreferences.getStringSet(TITLE_LIST_KEY, null);
+        HashSet<String> bodySet = (HashSet<String>) sharedPreferences.getStringSet(BODY_LIST_KEY, null);
+
         RecyclerView notesRecyclerView = findViewById(R.id.notesRecyclerView);
         notesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -72,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         HashSet<String> bodySet = new HashSet<>(MainActivity.bodyList);
         sharedPreferences.edit().putStringSet(BODY_LIST_KEY, bodySet).apply();
-        
+
         notesRecyclerAdapter.notifyDataSetChanged();
     }
     // Menu
