@@ -6,32 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".NoteEditorActivity">
 
-    <TextView
+    <EditText
         android:id="@+id/editorTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="textPersonName"
+        android:isScrollContainer="true"
         android:text="Title"
-        android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/editorBody"
+        style="@android:style/Widget.Holo.EditText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
-        android:gravity="start|top"
+        android:hint="Body"
         android:inputType="textMultiLine"
-        android:text="Body"
+        android:lineSpacingExtra="8sp"
+        android:singleLine="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

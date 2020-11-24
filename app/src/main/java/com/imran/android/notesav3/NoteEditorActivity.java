@@ -17,14 +17,14 @@ public class NoteEditorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_note_editor);
 
         title = findViewById(R.id.editorTitle);
-        body = findViewById(R.id.editTextTextMultiLine);
+        body = findViewById(R.id.editorBody);
 
         if(position < MainActivity.titleList.size()) {
             title.setText(MainActivity.titleList.get(position));
         }
 
         if (position < MainActivity.bodyList.size()) {
-            title.setText(MainActivity.bodyList.get(position));
+            body.setText(MainActivity.bodyList.get(position));
         }
 
         title.addTextChangedListener(new TextWatcher() {
@@ -35,7 +35,11 @@ public class NoteEditorActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence text, int start, int before, int count) {
-                MainActivity.saveTitle(position, String.valueOf(text));
+                if(text.length() == 0) {
+                    MainActivity.saveTitle(position, "No Title");
+                } else {
+                    MainActivity.saveTitle(position, String.valueOf(text));
+                }
             }
 
             @Override

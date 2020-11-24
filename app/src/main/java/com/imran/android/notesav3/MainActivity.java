@@ -17,6 +17,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public static List<String> titleList = new ArrayList<>();
     public static List<String> bodyList = new ArrayList<>();
+    private static NotesRecyclerAdapter notesRecyclerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView notesRecyclerView = findViewById(R.id.notesRecyclerView);
         notesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        NotesRecyclerAdapter notesRecyclerAdapter = new NotesRecyclerAdapter(this, titleList);
+        notesRecyclerAdapter = new NotesRecyclerAdapter(this, titleList);
         notesRecyclerView.setAdapter(notesRecyclerAdapter);
     }
 
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
             titleList.set(position, title);
         }
 
+        notesRecyclerAdapter.notifyDataSetChanged();
     }
 
     public static void saveBody(int position, String body) {
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             bodyList.set(position, body);
         }
+
+        notesRecyclerAdapter.notifyDataSetChanged();
     }
 
     // Menu
