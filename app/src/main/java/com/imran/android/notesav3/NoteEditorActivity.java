@@ -2,15 +2,23 @@ package com.imran.android.notesav3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.TextView;
 
+import java.util.HashSet;
+
 public class NoteEditorActivity extends AppCompatActivity {
+    private final String TITLE_LIST_KEY = "titleListKey";
+    private final String BODY_LIST_KEY = "bodyListKey";
     public static int position;
     private TextView title;
     private TextView body;
+    private SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.imran.android.notesav3", Context.MODE_PRIVATE);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +50,9 @@ public class NoteEditorActivity extends AppCompatActivity {
                     MainActivity.saveTitle(position, "No Title");
                 } else {
                     MainActivity.saveTitle(position, String.valueOf(text));
+
+                    HashSet<String> titleSet = new HashSet<>(MainActivity.titleList);
+                    sharedPreferences.edit().putStringSet(TITLE_LIST_KEY, titleSet).apply();
                 }
             }
 
@@ -64,6 +75,9 @@ public class NoteEditorActivity extends AppCompatActivity {
 
                 if(bodyText.length() > 0) {
                     MainActivity.saveBody(position, String.valueOf(text));
+
+                    HashSet<String> bodySet = new HashSet<>(MainActivity.bodyList);
+                    sharedPreferences.edit().putStringSet(BODY_LIST_KEY, bodySet).apply();
                 }
             }
 
