@@ -35,7 +35,10 @@ public class NoteEditorActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence text, int start, int before, int count) {
-                if(text.length() == 0) {
+                String titleText = text.toString();
+                titleText.replace(" ", "");
+
+                if(titleText.length() == 0) {
                     MainActivity.saveTitle(position, "No Title");
                 } else {
                     MainActivity.saveTitle(position, String.valueOf(text));
