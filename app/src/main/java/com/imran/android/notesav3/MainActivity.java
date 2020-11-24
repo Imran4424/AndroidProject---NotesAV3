@@ -14,17 +14,23 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private final static String TITLE_LIST_KEY = "titleListKey";
+    private final static String BODY_LIST_KEY = "bodyListKey";
     public static List<String> titleList = new ArrayList<>();
     public static List<String> bodyList = new ArrayList<>();
     private static NotesRecyclerAdapter notesRecyclerAdapter;
+    private static SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        sharedPreferences = getApplicationContext().getSharedPreferences("com.imran.android.notesav3", Context.MODE_PRIVATE);
 
         RecyclerView notesRecyclerView = findViewById(R.id.notesRecyclerView);
         notesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -40,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
             titleList.set(position, title);
         }
 
+        HashSet<String> titleSet = new HashSet<>(MainActivity.titleList);
+        sharedPreferences.edit().putStringSet(TITLE_LIST_KEY, titleSet).apply();
         notesRecyclerAdapter.notifyDataSetChanged();
     }
 
